@@ -1,0 +1,24 @@
+{
+  "ticker": "GOOGL",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.020058797764507547,
+    "ridge": 0.027890850216051907,
+    "lstm": 0.0335772329250958
+  },
+  "ensemble_weights": {
+    "arima": 0.43167041141464974,
+    "ridge": 0.3104527337313528,
+    "lstm": 0.25787685485399753
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

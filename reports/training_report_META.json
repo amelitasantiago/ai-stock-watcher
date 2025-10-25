@@ -1,0 +1,24 @@
+{
+  "ticker": "META",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.02296580349929696,
+    "ridge": 0.030623974781515916,
+    "lstm": 0.03393900975599846
+  },
+  "ensemble_weights": {
+    "arima": 0.412097921524018,
+    "ridge": 0.3090441716415987,
+    "lstm": 0.2788579068343833
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

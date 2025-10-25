@@ -1,0 +1,24 @@
+{
+  "ticker": "AAPL",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.020435706761407418,
+    "ridge": 0.02866585296251678,
+    "lstm": 0.032894787609331275
+  },
+  "ensemble_weights": {
+    "arima": 0.4284235974748515,
+    "ridge": 0.3054205381274387,
+    "lstm": 0.26615586439770994
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

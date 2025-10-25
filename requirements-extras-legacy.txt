@@ -1,0 +1,33 @@
+# =============================================================================
+# The Night's Watch - Advanced ML Models (Optional)
+# =============================================================================
+
+# Deep Learning Frameworks
+torch>=2.1.0
+tensorflow>=2.14.0
+
+# NLP & Transformers
+transformers>=4.35.0
+tokenizers>=0.15.0
+sentencepiece>=0.1.99
+
+# Sentiment Analysis
+vaderSentiment>=3.3.2
+textblob>=0.17.1
+
+# Additional ML Tools
+xgboost>=2.0.0
+lightgbm>=4.1.0
+catboost>=1.2.0
+
+# GPU Acceleration (Optional - Uncomment if using GPU)
+# torch>=2.1.0+cu118  # CUDA 11.8
+# tensorflow-gpu>=2.14.0
+
+# Model Optimization
+onnx>=1.15.0
+onnxruntime>=1.16.0
+
+# Explainability
+shap>=0.43.0
+lime>=0.2.0

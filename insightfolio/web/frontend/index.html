@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Night's Watch — AI Stock Watcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: radial-gradient(1000px 600px at 10% 0%, #0b1221 0%, #060a13 40%, #03060d 100%); }
+    .glass { background: linear-gradient(180deg, rgba(17,24,39,0.6), rgba(17,24,39,0.4)); border: 1px solid rgba(255,255,255,0.06); }
+    .tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; }
+    .tag-bull { background: rgba(16,185,129,0.12); color: #34d399; box-shadow: 0 0 12px rgba(16,185,129,0.25); }
+    .tag-bear { background: rgba(239,68,68,0.12); color: #f87171; box-shadow: 0 0 12px rgba(239,68,68,0.25); }
+    .tag-neutral { background: rgba(148,163,184,0.12); color: #cbd5e1; box-shadow: 0 0 10px rgba(148,163,184,0.2); }
+    .pill { padding: 8px 12px; border-radius: 999px; }
+    .card { border-radius: 16px; transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 12px 50px rgba(0,0,0,0.35); }
+    .shadow-soft { box-shadow: 0 4px 40px rgba(0,0,0,0.25); }
+    .glow-up { color: #22c55e; text-shadow: 0 0 12px rgba(34,197,94,0.55); }
+    .glow-down { color: #ef4444; text-shadow: 0 0 12px rgba(239,68,68,0.55); }
+  </style>
+</head>
+<body class="text-slate-200">
+  <header class="py-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-amber-400/10 text-amber-300 pill text-xs">
+            <span>🧠</span><span>Ancient AI Wisdom</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-black mt-3">The Night's Watch 🗡️</h1>
+          <p class="text-slate-400 mt-2">Vigilant guardians wielding ensemble forecasts and sentiment analysis to guard the realm's treasures.</p>
+          <div class="flex gap-3 mt-5">
+            <button id="beginBtn" class="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-xl px-5 py-3">Begin the Watch</button>
+            <button id="chartsBtn" class="bg-slate-700 hover:bg-slate-600 rounded-xl px-5 py-3">Ancient Charts</button>
+          </div>
+        </div>
+        <div class="hidden md:block opacity-70">
+          <span class="text-7xl">🏰</span>
+        </div>
+      </div>
+
+      <div class="mt-8 relative">
+        <input id="searchBox" placeholder="Seek holdings to watch (e.g., AAPL, Tesla)…" class="w-full glass card shadow-soft px-4 py-3 pr-12" />
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4">
+    <!-- Summary cards -->
+    <section id="summary" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="glass card p-4 shadow-soft">
+        <div class="text-slate-400 text-sm">Realm's Treasure</div>
+        <div id="sumTreasure" class="text-2xl font-bold mt-1">$—</div>
+      </div>
+      <div class="glass card p-4 shadow-soft">
+        <div class="text-slate-400 text-sm">Fortune's Change</div>
+        <div id="sumChange" class="text-2xl font-bold mt-1">—</div>
+      </div>
+      <div class="glass card p-4 shadow-soft">
+        <div class="text-slate-400 text-sm">The Winds</div>
+        <div id="sumWinds" class="text-2xl font-bold mt-1">—</div>
+      </div>
+      <div class="glass card p-4 shadow-soft">
+        <div class="text-slate-400 text-sm">Under Watch</div>
+        <div id="sumCount" class="text-2xl font-bold mt-1">— Holdings</div>
+      </div>
+    </section>
+
+    <!-- Holdings -->
+    <section class="mt-8">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-xl font-semibold">Your Watch</h2>
+        <div class="text-sm text-slate-400" id="glance"></div>
+      </div>
+      <div id="cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+  </main>
+
+  <template id="cardTmpl">
+    <div class="glass card p-4 shadow-soft">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-lg font-semibold"><span class="ticker">TICKER</span></div>
+          <div class="text-slate-400 text-xs company">Company Inc.</div>
+        </div>
+        <div class="sentiment tag tag-neutral">Neutral</div>
+      </div>
+      <div class="mt-3">
+        <div class="text-3xl font-extrabold price">$—</div>
+        <div class="text-xs mt-1 change">+0.00 (+0.00%)</div>
+      </div>
+      <div class="mt-3">
+        <canvas class="spark" height="48"></canvas>
+      </div>
+      <div class="text-[11px] text-slate-400 mt-2 horizon">7d</div>
+    </div>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>

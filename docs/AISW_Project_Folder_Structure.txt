@@ -1,0 +1,94 @@
+Project Folder Structure
+
+ai_stock_watcher/
+├─ README.md
+├─ LICENSE                          # MIT
+├─ .gitignore
+├─ .gitattributes
+├─ .env.example                     # sample env vars (copy to .env locally)
+├─ requirements.txt                 # core pipeline deps
+├─ requirements-ui.txt              # Streamlit UI
+├─ requirements-extras-legacy.txt   # FinBERT/VADER/LSTM extras (optional)
+├─ run_all.sh                       # end-to-end convenience (Linux/macOS)
+├─ run_all.bat                      # end-to-end convenience (Windows)
+│
+├─ config/
+│  ├─ config.yaml                   # primary config (paths, tickers, horizons)
+│  └─ config.json                   # legacy-compat (auto-written for legacy scripts)
+│
+├─ src/
+│  ├─ config/
+│  │  └─ config.json                # same legacy-compat (used by your old modules)
+│  └─ aisw/
+│     ├─ __init__.py
+│     ├─ cli.py                     # `python -m aisw.cli ...`
+│     ├─ utils.py
+│     ├─ config.py                  # loads YAML (env overrides supported)
+│     │
+│     ├─ data/
+│     │  ├─ market_data.py          # yfinance downloader + CSV cache
+│     │  └─ news.py                 # stub news fetcher (hook for FinBERT)
+│     │
+│     ├─ features/
+│     │  └─ technical.py            # returns, SMA/RSI/MACD, vol, lags
+│     │
+│     ├─ sentiment/
+│     │  └─ lexicon.py              # lightweight scoring (FinBERT drop-in later)
+│     │
+│     ├─ models/
+│     │  ├─ base.py
+│     │  ├─ naive.py                # baseline
+│     │  ├─ arima.py                # pmdarima wrapper
+│     │  ├─ rf.py                   # RandomForest on lag/tech features
+│     │  └─ registry.py             # persist/load models + model cards
+│     │
+│     ├─ ensemble/
+│     │  └─ weighted.py             # inverse-RMSE weights + blender
+│     │
+│     ├─ backtest/
+│     │  ├─ walkforward.py          # sliding window WFA + preds + metrics + PnL
+│     │  └─ metrics.py              # equity, costs (bps), Sharpe, MaxDD, etc.
+│     │
+│     ├─ signals/
+│     │  └─ rules.py                # BUY/HOLD/SELL using persisted models if present
+│     │
+│     └─ legacy/                    # original code (kept runnable)
+│        ├─ __init__.py
+│        ├─ wrappers.py             # adapters called by CLI
+│        ├─ financialSentimentAnalysis.py
+│        ├─ YFinanceStockDataCollection.py
+│        └─ multiModelStocksNightsWatch_v2.py
+│
+├─ insightfolio/
+│  └─ app/
+│     └─ app.py                     # Streamlit single-chart Nightwatch UI
+│
+├─ docs/
+│  ├─ ROADMAP.md
+│  └─ USAGE.md                      # (recommended) concise “how-to run” guide
+│
+├─ tests/
+│  ├─ test_sanity.py                # import/load smoke test
+│  ├─ test_features.py              # (recommended) unit tests for indicators
+│  └─ test_backtest.py              # (recommended) PnL math & shapes
+│
+├─ logs/
+│  └─ logging.conf                  # (recommended) file/console logging setup
+│
+├─ models/
+│  └─ final/
+│     └─ {TICKER}/                  # persisted joblib + *.meta.json per ticker (created at train time)
+│
+├─ data/                            # GENERATED at runtime (don’t commit)
+│  ├─ my_stock_data/                # CSVs (prices, features)
+│  ├─ comprehensive_news_data/      # news cache
+│  ├─ financial_sentiment_results/  # sentiment outputs
+│  ├─ backtests/                    # preds, metrics, equity, pnl_summary.json
+│  └─ signals/                      # latest signal CSVs
+│
+└─ .github/
+   └─ workflows/
+      └─ ci.yml                     # (recommended) lint + tests on push/PR
+
+
+ 

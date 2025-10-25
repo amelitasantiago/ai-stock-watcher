@@ -1,0 +1,63 @@
+{
+  "ticker": "AAPL",
+  "lags": 20,
+  "features_price_only": [
+    "lag_1",
+    "lag_2",
+    "lag_3",
+    "lag_4",
+    "lag_5",
+    "lag_6",
+    "lag_7",
+    "lag_8",
+    "lag_9",
+    "lag_10",
+    "lag_11",
+    "lag_12",
+    "lag_13",
+    "lag_14",
+    "lag_15",
+    "lag_16",
+    "lag_17",
+    "lag_18",
+    "lag_19",
+    "lag_20"
+  ],
+  "features_with_sent": [
+    "lag_1",
+    "lag_2",
+    "lag_3",
+    "lag_4",
+    "lag_5",
+    "lag_6",
+    "lag_7",
+    "lag_8",
+    "lag_9",
+    "lag_10",
+    "lag_11",
+    "lag_12",
+    "lag_13",
+    "lag_14",
+    "lag_15",
+    "lag_16",
+    "lag_17",
+    "lag_18",
+    "lag_19",
+    "lag_20",
+    "sent",
+    "sent_ma7",
+    "sent_ma14"
+  ],
+  "metrics": {
+    "price_only": {
+      "rmse": 0.0004090183500530572,
+      "mae": 0.01273496337252067,
+      "dir_acc": 0.48638132295719844
+    },
+    "with_sent": {
+      "rmse": 0.0004090183500530572,
+      "mae": 0.01273496337252067,
+      "dir_acc": 0.48638132295719844
+    }
+  }
+}

@@ -1,0 +1,13 @@
+yfinance
+pandas
+numpy
+requests
+newsapi-python
+transformers
+vaderSentiment
+structlog
+torch
+scikit-learn
+statsmodels
+
+#pip install torch torchvision torchaudio

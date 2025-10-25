@@ -1,0 +1,24 @@
+{
+  "ticker": "NFLX",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.020845646373839455,
+    "ridge": 0.028625552206470107,
+    "lstm": 0.034909012262726774
+  },
+  "ensemble_weights": {
+    "arima": 0.4300408276365773,
+    "ridge": 0.31316357229858743,
+    "lstm": 0.2567956000648352
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

@@ -1,0 +1,53 @@
+<header class="py-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-amber-400/10 text-amber-300 pill text-xs">
+            <span>🧠</span><span>Ancient AI Wisdom</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-black mt-3">The Night's Watch 🗡️</h1>
+          <p class="text-slate-400 mt-2">Vigilant guardians wielding ensemble forecasts and sentiment analysis to guard the realm's treasures.</p>
+          <div class="flex gap-3 mt-5">
+            <button id="beginBtn" class="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-xl px-5 py-3">Begin the Watch</button>
+            <button id="chartsBtn" class="bg-slate-700 hover:bg-slate-600 rounded-xl px-5 py-3">Ancient Charts</button>
+          </div>
+        </div>
+        <div class="hidden md:block opacity-70">
+          <span class="text-7xl">🏰</span>
+        </div>
+      </div>
+
+      <div class="mt-8 relative">
+        <input id="searchBox" placeholder="Seek holdings to watch (e.g., AAPL, Tesla)…" class="w-full glass card shadow-soft px-4 py-3 pr-12" />
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
+      </div>
+    </div>
+  </header>
+
+
+
+  /* keep sparklines inside cards */
+.watch-card{ position: relative; overflow: hidden; }
+.watch-card canvas.spark{
+  display:block;
+  width: 100% !important;
+  height: 44px !important;   /* price spark height */
+  margin-top: 6px;
+  position: relative;        /* ensure it doesn't go absolute/full width */
+}
+.watch-card canvas.spark-sent{
+  height: 28px !important;   /* tiny sentiment sparkline */
+  margin-top: 6px;
+}
+
+/* summary stat tiles */
+.stat{ background: var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px 18px; }
+.stat .label{ color:var(--muted); margin-bottom:6px }
+.stat .value{ font-weight: 800; font-size: 1.4rem }
+
+/* watched pill */
+#watched-pill{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border:1px solid var(--border); border-radius:999px;
+  background:#0f1726; font-weight:600;
+}

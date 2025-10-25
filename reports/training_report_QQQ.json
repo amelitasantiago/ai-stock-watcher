@@ -1,0 +1,24 @@
+{
+  "ticker": "QQQ",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.014817790061454283,
+    "ridge": 0.019622830279779374,
+    "lstm": 0.02675851414067883
+  },
+  "ensemble_weights": {
+    "arima": 0.4331085071179229,
+    "ridge": 0.32705333029701894,
+    "lstm": 0.2398381625850581
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

@@ -1,0 +1,24 @@
+{
+  "ticker": "MSFT",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.015555882708359363,
+    "ridge": 0.021031485704262234,
+    "lstm": 0.023025520323609487
+  },
+  "ensemble_weights": {
+    "arima": 0.4140374051138496,
+    "ridge": 0.30624172154780654,
+    "lstm": 0.27972087333834383
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

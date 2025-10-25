@@ -1,0 +1,24 @@
+{
+  "ticker": "NVDA",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.03126640583311532,
+    "ridge": 0.04167800479971832,
+    "lstm": 0.04823070159126454
+  },
+  "ensemble_weights": {
+    "arima": 0.4169346459172873,
+    "ridge": 0.3127800610736072,
+    "lstm": 0.2702852930091056
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

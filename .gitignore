@@ -1,0 +1,119 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Data Files (Generated at Runtime)
+data/
+!data/.gitkeep
+my_stock_data/
+comprehensive_news_data/
+financial_sentiment_results/
+backtests/
+signals/
+
+# Models (Trained Models - Too Large for Git)
+models/
+!models/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# API Keys & Secrets
+src/config/api_keys.json
+config/api_keys.json
+secrets.json
+credentials.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Model Files
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.pth
+*.ckpt
+
+# Data Files
+*.csv
+*.parquet
+*.feather
+
+# Compressed Files
+*.zip
+*.tar.gz
+*.rar
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Documentation Build
+docs/_build/
+site/
+
+# Temporary Files
+*.tmp
+*.bak
+*.cache
+temp/
+tmp/
+
+# Config (Keep Examples, Ignore Actual)
+config.json
+!config/config.yaml
+!.env.example

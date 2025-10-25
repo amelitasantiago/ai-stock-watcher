@@ -1,0 +1,289 @@
+{
+  "timestamp": "2025-09-19T21:09:06.575714",
+  "total_tickers": 11,
+  "successful_tickers": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "TSLA",
+    "NVDA",
+    "NFLX",
+    "SPY",
+    "QQQ",
+    "IWM"
+  ],
+  "failed_tickers": [],
+  "training_reports": {
+    "AAPL": {
+      "ticker": "AAPL",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.020435706761407418,
+        "ridge": 0.02866585296251678,
+        "lstm": 0.032894787609331275
+      },
+      "ensemble_weights": {
+        "arima": 0.4284235974748515,
+        "ridge": 0.3054205381274387,
+        "lstm": 0.26615586439770994
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "MSFT": {
+      "ticker": "MSFT",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.015555882708359363,
+        "ridge": 0.021031485704262234,
+        "lstm": 0.023025520323609487
+      },
+      "ensemble_weights": {
+        "arima": 0.4140374051138496,
+        "ridge": 0.30624172154780654,
+        "lstm": 0.27972087333834383
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "GOOGL": {
+      "ticker": "GOOGL",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.020058797764507547,
+        "ridge": 0.027890850216051907,
+        "lstm": 0.0335772329250958
+      },
+      "ensemble_weights": {
+        "arima": 0.43167041141464974,
+        "ridge": 0.3104527337313528,
+        "lstm": 0.25787685485399753
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.02111451854000826,
+        "ridge": 0.027989648886492986,
+        "lstm": 0.03239207166676961
+      },
+      "ensemble_weights": {
+        "arima": 0.4155911172042655,
+        "ridge": 0.3135090191977278,
+        "lstm": 0.2708998635980067
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "META": {
+      "ticker": "META",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.02296580349929696,
+        "ridge": 0.030623974781515916,
+        "lstm": 0.03393900975599846
+      },
+      "ensemble_weights": {
+        "arima": 0.412097921524018,
+        "ridge": 0.3090441716415987,
+        "lstm": 0.2788579068343833
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "TSLA": {
+      "ticker": "TSLA",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.04469413174477806,
+        "ridge": 0.061762436791950155,
+        "lstm": 0.0616454713363106
+      },
+      "ensemble_weights": {
+        "arima": 0.4083858190621959,
+        "ridge": 0.29552672589554874,
+        "lstm": 0.29608745504225553
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "NVDA": {
+      "ticker": "NVDA",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.03126640583311532,
+        "ridge": 0.04167800479971832,
+        "lstm": 0.04823070159126454
+      },
+      "ensemble_weights": {
+        "arima": 0.4169346459172873,
+        "ridge": 0.3127800610736072,
+        "lstm": 0.2702852930091056
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "NFLX": {
+      "ticker": "NFLX",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.020845646373839455,
+        "ridge": 0.028625552206470107,
+        "lstm": 0.034909012262726774
+      },
+      "ensemble_weights": {
+        "arima": 0.4300408276365773,
+        "ridge": 0.31316357229858743,
+        "lstm": 0.2567956000648352
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "SPY": {
+      "ticker": "SPY",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.012275593845229213,
+        "ridge": 0.016025298481168907,
+        "lstm": 0.02004219507502779
+      },
+      "ensemble_weights": {
+        "arima": 0.4204328227602347,
+        "ridge": 0.32205724974347905,
+        "lstm": 0.2575099274962864
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "QQQ": {
+      "ticker": "QQQ",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.014817790061454283,
+        "ridge": 0.019622830279779374,
+        "lstm": 0.02675851414067883
+      },
+      "ensemble_weights": {
+        "arima": 0.4331085071179229,
+        "ridge": 0.32705333029701894,
+        "lstm": 0.2398381625850581
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    },
+    "IWM": {
+      "ticker": "IWM",
+      "models_trained": 3,
+      "model_performance": {
+        "arima": 0.014594353197908291,
+        "ridge": 0.01949825297293788,
+        "lstm": 0.023867744670176702
+      },
+      "ensemble_weights": {
+        "arima": 0.423735394644363,
+        "ridge": 0.3171640600925307,
+        "lstm": 0.25910054526310633
+      },
+      "feature_count": 24,
+      "prediction_horizon": 3,
+      "arima_available": true,
+      "ridge_available": true,
+      "ridge_horizons": [
+        1,
+        2,
+        3
+      ],
+      "lstm_available": true
+    }
+  },
+  "configuration": {
+    "prediction_horizon": 3,
+    "sequence_length": 30,
+    "max_features": 15
+  }
+}

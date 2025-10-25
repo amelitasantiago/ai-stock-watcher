@@ -1,0 +1,8 @@
+fastapi==0.114.2
+uvicorn==0.30.6
+numpy
+pandas
+scikit-learn
+statsmodels
+pmdarima
+torch

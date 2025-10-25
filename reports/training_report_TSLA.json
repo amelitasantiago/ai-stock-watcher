@@ -1,0 +1,24 @@
+{
+  "ticker": "TSLA",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.04469413174477806,
+    "ridge": 0.061762436791950155,
+    "lstm": 0.0616454713363106
+  },
+  "ensemble_weights": {
+    "arima": 0.4083858190621959,
+    "ridge": 0.29552672589554874,
+    "lstm": 0.29608745504225553
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}

@@ -1,0 +1,29 @@
+data_dir: "./data"
+price_cache_dir: "./data/my_stock_data"
+news_cache_dir: "./data/comprehensive_news_data"
+sentiment_cache_dir: "./data/financial_sentiment_results"
+
+tickers: ["AMZN", "NVDA", "TSLA", "META", "JPM", "NFLX"]
+
+day_bar:
+  interval: "1d"
+  lookback: 1500
+
+forecast:
+  horizon_days: 5
+  features:
+    r_lags: [1,2,3,5,10]
+    sma_windows: [5,10,20,50]
+    rsi_windows: [14]
+    macd: { fast: 12, slow: 26, signal: 9 }
+    vol_windows: [10,20]
+  # Optional later:
+  # use_sentiment: true
+
+backtest:
+  window_days: 252
+  step_days: 21
+
+sentiment:
+  source: "lexicon"   # "lexicon" | "finbert"
+  api_key: null

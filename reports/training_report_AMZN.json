@@ -1,0 +1,24 @@
+{
+  "ticker": "AMZN",
+  "models_trained": 3,
+  "model_performance": {
+    "arima": 0.02111451854000826,
+    "ridge": 0.027989648886492986,
+    "lstm": 0.03239207166676961
+  },
+  "ensemble_weights": {
+    "arima": 0.4155911172042655,
+    "ridge": 0.3135090191977278,
+    "lstm": 0.2708998635980067
+  },
+  "feature_count": 24,
+  "prediction_horizon": 3,
+  "arima_available": true,
+  "ridge_available": true,
+  "ridge_horizons": [
+    1,
+    2,
+    3
+  ],
+  "lstm_available": true
+}
