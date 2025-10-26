@@ -6,7 +6,7 @@ An intelligent, real-time stock market monitoring system powered by AI that iden
 
 NUS-ISS Intelligent Reasoning Systems | 2025
 
-**Developers:** Amelita Santiago | Lee Fang Hui | Hong Jin JIe
+**Developers:**  Lee Fang Hui | Amelita Talavera Santiago | Hong Jin JIe
 
 ---
 
@@ -32,14 +32,14 @@ NUS-ISS Intelligent Reasoning Systems | 2025
 
 **The Night's Watch** addresses a critical challenge faced by retail investors: the inability to monitor vast amounts of market data across multiple sources simultaneously. By deploying AI-powered surveillance, the system:
 
-- **Monitors** stock markets in real-time with sub-minute data refresh rates
-- **Analyzes** sentiment from financial news and social media using NLP
+- **Monitors** stock markets in real-time with minute-to-hour (default 1h) data refresh rates
+- **Analyzes** sentiment from financial news using NLP
 
 
 ### The Problem We Solve
 
 Modern retail investors face three major challenges:
-1. **Information Overload**: Impossible to manually process price, volume, news, and social media data
+1. **Information Overload**: Impossible to manually process price, volume, news, and news sentiment
 2. **Reaction Latency**: By the time investors discover events, institutional algorithms have already acted
 3. **Emotional Decision-Making**: Fear and greed drive impulsive decisions without systematic analysis
 
@@ -54,11 +54,11 @@ A tireless AI sentinel that combines multiple intelligence signals into actionab
 ### Core Capabilities
 
 - 🔍 **Real-Time Market Surveillance** - Continuous monitoring of user-specified watchlists (10-50 stocks)
-- 💬 **Sentiment Analysis** - Real-time processing of financial news using FinBERT-based NLP models
+- 💬 **Sentiment Analysis** - Real-time processing of financial news using VADER (baseline) with optional FinBERT (batched)
 - 📈 **Technical Indicators** - Automated calculation of RSI, MACD, Bollinger Bands, and more
 - 🎯 **Multi-Signal Fusion** - Combines price, volume, and sentiment for comprehensive risk scoring
 - 🔄 **Walk-Forward Backtesting** - Validate strategies on historical data with realistic constraints
-- 📱 **Uvicorn Dashboard** - Interactive web UI for real-time monitoring and visualization
+- 📱 **Night’s Watch UI** - Interactive web UI for real-time monitoring and visualization
 
 ### Intelligent Reasoning Techniques
 
@@ -74,38 +74,47 @@ A tireless AI sentinel that combines multiple intelligence signals into actionab
 ┌─────────────────────────────────────────────────────┐
 │         DATA INGESTION LAYER                        │
 │  ┌──────────┐  ┌──────────┐                         │
-│  │ Yahoo    │  │ NewsAPI  │                         |
-│  │ Finance  │  │          │                         |
+│  │ Yahoo    │  │ NewsAPI  │                         │
+│  │ Finance  │  │          │                         │
 │  └────┬─────┘  └────┬─────┘                         │
-└───────┼─────────────┼────────────────────────────---┘
+└───────┼─────────────┼───────────────────────────────┘
         │             │                              
         ▼             ▼                              
-┌─────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────┐
 │    DATA PROCESSING & FEATURE ENGINEERING           │
 │  • Normalization  • Validation  • Indicators       │
 │  • Text Preprocessing  • Embedding Generation      │
-└──────────────────────┬──────────────────────────────┘
+└──────────────────────┬─────────────────────────────┘
                        │                              
                        ▼                              
-┌─────────────────────────────────────────────────────┐
-│          AI REASONING CORE                          │
-│  ┌──────────────┐  ┌──────────────┐               │
-│  │  Anomaly     │  │  Sentiment   │               │
-│  │  Detection   │  │  Analysis    │               │
-│  │(Iso. Forest) │  │  (FinBERT)   │               │
-│  └──────┬───────┘  └──────┬───────┘               │
-│         │                  │                        │
-│         └──────┬───────────┘                        │
-│                ▼                                    │
-│       ┌────────────────┐                           │
-│       │ Signal Fusion  │                           │
-│       │  & Scoring     │                           │
-│       └────────────────┘                           │
-└────────────────────────────────────────────────────┘
-                                                   
-
+┌───────────────────────────────────────────────────┐
+│          AI REASONING CORE                        │
+│  ┌───────────────────────────────┐                │
+│  │ Sentiment Analysis (VADER)    │                │
+│  └───────────────┬───────────────┘                │
+│                  ▼                                │
+│        ┌───────────────────────┐                  │
+│        │ Signal Fusion &       │                  │
+│        │ Scoring (Ensemble)    │                  │
+│        └───────────────────────┘                  │
+└───────────────────────────────────────────────────┘
 ```
+**Technology Stack** 
 
+* **Backend:** Python 3.11, FastAPI for REST APIs, Uvicorn ASGI server.
+* **Data Ingestion:** yfinance for OHLCV/quotes, Yahoo Finance RSS via feedparser (News).
+* **Data Science Core:** Pandas, NumPy, Scikit-learn (pipelines, calibration, RF).
+* **Time-Series & Forecasting:** statsmodels (ARIMA), pmdarima (auto-ARIMA), SciPy.
+* **NLP / Sentiment:** NLTK VADER (fast), Transformers/FinBERT (ProsusAI/finbert) optional.
+* **Storage / Database:** **SQLite** (local .db), Parquet/CSV for data files, joblib for models.
+* **Feature Engineering:** TA indicators (SMA/EMA/RSI/MACD), rolling stats, lagged returns.
+* **Ensembling & Calibration:** inverse-error weighting, isotonic regression to P(up).
+* **Backtesting:** custom walk-forward engine (window/step), metrics (Sharpe, MaxDD, Brier).
+* **Frontend/UI:** HTML/CSS/JS (index.html + app.js) and/or React/Next.js (page.tsx), Streamlit optional.
+* **Charts/Visualization:** Chart.js or ECharts in web UI; matplotlib for static plots.
+* **Config & Secrets:** JSON config (`config/config.json`) + `.env` overrides, python-dotenv for .env handling.
+* **Testing & Quality:** pytest, black, isort, mypy (optional typing checks).
+* **DevOps / CI:** Git + GitHub Actions (lint/build), Docker optional for deployment.
 ---
 
 ## 🚀 Installation
@@ -213,7 +222,7 @@ pip install -r requirements-ui.txt
 uvicorn insightfolio.server.server:app --port 8000
 ```
 
-Navigate to `http://localhost:00000` in your browser.
+Navigate to `http://127.0.0.1:8000` in your browser.
 
 ---
 
@@ -248,43 +257,30 @@ print(signals)
 
 ## ⚙️ Configuration
 
-### Main Configuration File: `config/config.yaml`
+### Main Configuration File: `config/config.json`
 
-```yaml
-data:
-  tickers:
-    - AMZN
-    - NVDA
-    - AAPL
-    - MSFT
-    - TSLA
-    - META
-  start_date: "2020-01-01"
-  end_date: "2024-01-01"
-  interval: "1d"
-
-features:
-  technical_indicators:
-    - sma_20
-    - sma_50
-    - rsi
-    - macd
-    - bollinger_bands
-  lags: [1, 2, 3, 5, 10]
-
-models:
-  train_test_split: 0.8
-  walk_forward:
-    train_window: 252
-    test_window: 63
-  ensemble_weights: "auto"  # or manual: [0.3, 0.4, 0.3]
-
-backtest:
-  initial_capital: 100000
-  transaction_cost_bps: 10  # 10 basis points per trade
-  position_size: "equal"     # or "volatility_adjusted"
-
-
+```json
+{
+  "data": {
+    "tickers": ["AMZN","NVDA","AAPL","MSFT","TSLA","META"],
+    "start_date": "2020-01-01",
+    "end_date": "2024-01-01",
+    "interval": "1d"
+  },
+  "features": {
+    "technical_indicators": ["sma_20","sma_50","rsi","macd","bollinger_bands"],
+    "lags": [1,2,3,5,10]
+  },
+  "models": {
+    "walk_forward": {"train_window": 252, "test_window": 63},
+    "ensemble_weights": "auto"
+  },
+  "backtest": {
+    "initial_capital": 100000,
+    "transaction_cost_bps": 10,
+    "position_size": "equal"
+  }
+}
 ```
 
 ### Environment Variables: `.env`
@@ -305,13 +301,12 @@ LOG_LEVEL=INFO
 ## 📁 Project Structure
 
 ```
-ai_stock_watcher/
+ai-stock-watcher/
 ├── README.md                       # This file
 ├── LICENSE                         # MIT License
 ├── .gitignore                      # Git ignore rules
 ├── .env.example                    # Sample environment variables
 ├── requirements.txt                # Core dependencies
-├── requirements-ui.txt             # Streamlit UI dependencies
 ├── requirements-extras-legacy.txt  # Optional ML models runs in Colab
 ├── run_all.sh                      # Linux/macOS runner
 ├── run_all.bat                     # Windows runner
@@ -398,14 +393,10 @@ ai_stock_watcher/
 **FinBERT (Transfer Learning)**
 - Pre-trained transformer model fine-tuned on financial texts
 - Advantages: 15% accuracy improvement over generic BERT
-- Use case: Classifying news sentiment, social media analysis
+- Use case: Classifying news sentiment, news sentiment
 
 ### Time-Series Forecasting
 
-**LSTM (Long Short-Term Memory)**
-- Captures temporal dependencies in stock price movements
-- Advantages: Handles sequential data, learns complex patterns
-- Use case: Short-term price prediction, volatility forecasting
 
 **ARIMA (AutoRegressive Integrated Moving Average)**
 - Statistical baseline for time-series prediction
@@ -421,9 +412,14 @@ ai_stock_watcher/
 
 **Weighted Averaging**
 - Combines predictions from multiple models using inverse-RMSE weights
-- Reduces false positives by 40% compared to single models
+- Aims to reduce false positives versus single models (validated in backtests; results vary)
 
 ---
+
+## 📚 Documentation
+
+- **[Complete Project Documentation](docs/The_Nights_Watch_Documentation.docx)** - Comprehensive technical documentation
+- **[Usage Guide](docs/USAGE.md)** - Detailed usage instructions
 
 ---
 
@@ -455,7 +451,9 @@ pytest --cov=aisw tests/
 
 ## 📊 Performance Metrics
 
-### Backtesting Results (Q4 2024)
+> **Note:** The figures below are illustrative demo metrics. Replace with your latest backtest run before submission.
+
+## # Backtesting Results (Q4 2024)
 
 - **Early Alert Success**: Identified 15% price drop 30 minutes before news
 - **Sentiment Correlation**: -0.68 with next-hour price movements
@@ -481,8 +479,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-**NUS-ISS Faculty:** For guidance and supervision from: Prof. Zhu Fangming: Prof. Gary Leung: Prof. Xavier Xie; Prof. Ding Liya; Prof. TIAN Jing; Prof. Barry Shepherd; Prof. 
-- Beta testers for invaluable feedback
+**NUS-ISS Faculty:** For guidance and supervision from: Prof. Zhu Fangming: Prof. Gary Leung: Prof. Xavier Xie; Prof. Ding Liya; Prof. TIAN Jing; Prof. Barry Shepherd; Prof. Wang Aubo; Prof. Marylyn Xiang
 - Open-source community for essential tools:
   - [yfinance](https://github.com/ranaroussi/yfinance) - Yahoo Finance data
   - [scikit-learn](https://scikit-learn.org/) - Machine learning
